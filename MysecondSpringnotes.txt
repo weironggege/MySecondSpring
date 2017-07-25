@@ -1,0 +1,19 @@
+1.
+
+class:bean的全类名，通过反射的方式在IOC容器中创建bean, 所以要求bean中必须有无参的构造器
+
+id:标识容器中的bean,id唯一
+
+ApplicationContext 代表IOC容器
+
+ClassPathXmlApplicationContext:是ApplicationContext接口的实现类，从类路径下加载配置文件
+
+一般都是利用id 定位到容器中的bean, 如果用class定位容器中的bean, 则需要容器中的bean唯一
+
+通过属性注入，但类必须要有set方法，
+
+2. 可以使用autowire属性指定自动装配的方式，
+	byName根据bean的名字和当前的bean的setter的属性名进行自动装配， 若有匹配的，则自动进行装配，若没有匹配的，则不匹配。
+	byType根据bean的类型和当前的属性的类型进行自动装配， 若IOC容器有1个以上的类型匹配的Bean，则抛异常。
+
+3. 抽象bean:bean的abstract属性为true的bean,这样的bean不能被IOC容器实例化， 只能用来被继承，抽象bean可以作为模板， 若一个bean的class属性没有被指定，那么这个bean一定为抽象bean
